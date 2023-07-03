@@ -2,26 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    @apply w-screen h-screen overflow-scroll bg-white;
+}
+
+:root {
+    --scroll-bar-color: #0e0e0e;
+    --scroll-bar-bg-color: #00000000;
+}
+
+* {
+    scrollbar-width: 2px;
+    scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scroll-bar-bg-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color);
+    border-radius: 2px;
+    border: 3px solid var(--scroll-bar-bg-color);
+}
+
+.chartfilter {
+    background-image: url("/icon-b.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+}
+
+.audiolayer:has(.playing) {
+    opacity: 100;
 }
